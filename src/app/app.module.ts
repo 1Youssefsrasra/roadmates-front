@@ -20,6 +20,14 @@ import { ProfileLayoutComponent } from './layouts/profile-layout/profile-layout.
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { RideCardComponent } from './components/ride-card/ride-card.component';
+import { DemandCardComponent } from './components/demand-card/demand-card.component';
+import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
 
 
 
@@ -33,6 +41,10 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     CreateRideLayoutComponent,
     ProfileLayoutComponent,
     SearchBarComponent,
+    RideCardComponent,
+    DemandCardComponent,
+    UserLayoutComponent,
+    FeedbackCardComponent,
     
   ],
   imports: [
@@ -47,7 +59,12 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     BrowserAnimationsModule,
     MatIconModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    NgxMaterialTimepickerModule
+
+    
 
   
     

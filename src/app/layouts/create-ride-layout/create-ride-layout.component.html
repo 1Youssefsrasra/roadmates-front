@@ -3,46 +3,12 @@
 
 <app-search-bar></app-search-bar>
 
-<main>
-    <section class="create-ride-section" aria-labelledby="create-ride-heading">
-        <h2 id="create-ride-heading">Create a Ride</h2>
-        <form class="create-ride-form" aria-labelledby="create-ride-form">
-            <label for="starting-point">Starting Point</label>
-            <input type="text" id="starting-point" name="starting-point" required aria-required="true" aria-label="Enter the starting point">
-
-            <label for="destination">Destination</label>
-            <input type="text" id="destination" name="destination" required aria-required="true" aria-label="Enter the destination">
-
-            <label for="date">Date</label>
-            <input type="date" id="date" name="date" required aria-required="true" aria-label="Select the date of the ride">
-
-            <label for="time">Time</label>
-            <input type="time" id="time" name="time" required aria-required="true" aria-label="Select the time of the ride">
-
-            <label for="available-seats">Available Seats</label>
-            <input type="number" id="available-seats" name="available-seats" required aria-required="true" aria-label="Enter the number of available seats">
-
-            <label for="price-per-seat">Price per Seat</label>
-            <input type="number" id="price-per-seat" name="price-per-seat" required aria-required="true" aria-label="Enter the price per seat">
-
-            <label for="car-model">Car Model</label>
-            <input type="text" id="car-model" name="car-model" required aria-required="true" aria-label="Enter the car model">
-
-            <div class="options" aria-labelledby="options-heading">
-                <p id="options-heading">Ride Options</p>
-                <input type="checkbox" id="smoking-allowed" name="options" value="Smoking Allowed" aria-label="Smoking Allowed">
-                <label for="smoking-allowed">Smoking Allowed</label>
-
-                <input type="checkbox" id="music-on" name="options" value="Music On" aria-label="Music On">
-                <label for="music-on">Music On</label>
-
-                <input type="checkbox" id="air-conditioning" name="options" value="Air Conditioning" aria-label="Air Conditioning">
-                <label for="air-conditioning">Air Conditioning</label>
-            </div>
-
-            <button type="submit" class="submit-btn" aria-label="Submit your ride details">Submit</button>
-        </form>
-    </section>
-</main>
+<div class="rides-grid-container">
+    <app-ride-card
+      *ngFor="let ride of rides"
+      [ride]="ride"
+    ></app-ride-card>
+  </div>
+  
 
 <app-footer></app-footer>

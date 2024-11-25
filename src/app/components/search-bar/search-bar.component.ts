@@ -4,18 +4,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css']
+  styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent {
-
   searchForm: FormGroup;
-  selectedDate: string | null = null;
   passengers: number = 1;
 
   constructor(private fb: FormBuilder) {
     this.searchForm = this.fb.group({
       departure: ['', Validators.required],
       destination: ['', Validators.required],
+      date: ['', Validators.required],
     });
   }
 
@@ -24,7 +23,7 @@ export class SearchBarComponent {
       const formData = {
         departure: this.searchForm.value.departure,
         destination: this.searchForm.value.destination,
-        date: this.selectedDate || 'Today',
+        date: this.searchForm.value.date,
         passengers: this.passengers,
       };
       console.log('Search submitted:', formData);
@@ -33,14 +32,22 @@ export class SearchBarComponent {
     }
   }
 
-  selectDate() {
-    const date = prompt('Enter a date (e.g., 2023-12-25):');
-    this.selectedDate = date ? date : null;
+  switchLocations() {
+    const departure = this.searchForm.get('departure')?.value;
+    const destination = this.searchForm.get('destination')?.value;
+    this.searchForm.patchValue({
+      departure: destination,
+      destination: departure,
+    });
   }
 
-  selectPassengers() {
-    const count = prompt('Enter number of passengers:');
-    this.passengers = count ? parseInt(count, 10) || 1 : 1;
+  incrementPassengers() {
+    this.passengers += 1;
   }
 
+  decrementPassengers() {
+    if (this.passengers > 1) {
+      this.passengers -= 1;
+    }
+  }
 }

@@ -44,3 +44,19 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+.rides-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three cards in a row */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+    width: 90%; /* Adjust the width of the grid */
+    margin: 0 auto; /* Center the grid on the page */
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-top: 30px;
+  }
+  
+  
