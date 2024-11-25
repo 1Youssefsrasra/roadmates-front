@@ -1,0 +1,39 @@
+<div class="search-container">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <!-- Departure Field -->
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Departure</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput placeholder="Enter departure location" formControlName="departure" />
+      </mat-form-field>
+  
+      <!-- Destination Field -->
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Destination</mat-label>
+        <mat-icon matPrefix>place</mat-icon>
+        <input matInput placeholder="Enter destination location" formControlName="destination" />
+      </mat-form-field>
+  
+      <!-- Date Field -->
+      <div class="form-row">
+        <button mat-raised-button color="primary" type="button" class="date-button" (click)="selectDate()">
+          <mat-icon>calendar_today</mat-icon>
+          <span>{{ selectedDate || 'Today' }}</span>
+        </button>
+      </div>
+  
+      <!-- Passengers Field -->
+      <div class="form-row">
+        <button mat-raised-button color="primary" type="button" class="passenger-button" (click)="selectPassengers()">
+          <mat-icon>person</mat-icon>
+          <span>{{ passengers }} Passenger{{ passengers > 1 ? 's' : '' }}</span>
+        </button>
+      </div>
+  
+      <!-- Submit Button -->
+      <button mat-raised-button color="accent" type="submit" class="full-width">
+        Search
+      </button>
+    </form>
+  </div>
+  

@@ -1,0 +1,25 @@
+/* Footer */
+footer {
+    background-color: #f5f5f5;
+    padding: 20px 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20px;
+}
+
+.contact-info, .about-info, .social-media {
+    text-align: center;
+}
+
+.social-media .social-icons a {
+    margin: 0 5px;
+}
+
+.social-media .social-icons img {
+    width: 20px;
+}
+

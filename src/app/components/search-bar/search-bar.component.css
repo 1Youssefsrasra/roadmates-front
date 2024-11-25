@@ -1,0 +1,41 @@
+.search-container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+  }
+  
+form {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    justify-content: space-around;
+    width: 100%;
+}
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 15px;
+    
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-direction: row;
+  }
+  
+  .date-button,
+  .passenger-button {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  
+  mat-icon {
+    margin-right: 10px;
+  }
+  

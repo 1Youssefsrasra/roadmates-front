@@ -1,0 +1,46 @@
+.create-ride-btn {
+    padding: 10px 20px;
+    background-color: #000;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Create Ride Section */
+.create-ride-section {
+    padding: 40px 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.create-ride-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-ride-form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.create-ride-form input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.submit-btn {
+    padding: 10px;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
