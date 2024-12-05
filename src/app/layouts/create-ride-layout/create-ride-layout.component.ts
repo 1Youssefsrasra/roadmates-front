@@ -1,95 +1,79 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { RideServiceService, Ride } from 'src/app/services/ride-service.service';
 
 @Component({
   selector: 'app-create-ride-layout',
   templateUrl: './create-ride-layout.component.html',
   styleUrls: ['./create-ride-layout.component.css']
 })
-export class CreateRideLayoutComponent {
-  rides = [
-    {
-      id: 1,
-      departure: 'Waziers',
-      destination: 'Gennevilliers',
-      time: '18:00',
-      date: '2023-12-01',
-      availableSeats: 2,
-      pricePerSeat: '15,59',
-      author: 'Gabriel',
-      authorPhoto: 'assets/images/profile.png',
-      rating: '5.0',
-    },
-    {
-      id: 2,
-      departure: 'Paris',
-      destination: 'Lille',
-      time: '10:00',
-      date: '2023-12-02',
-      availableSeats: 3,
-      pricePerSeat: '20,00',
-      author: 'Emma',
-      authorPhoto: 'assets/images/profile.png',
-      rating: '4.8',
-    },
-   
-    {
-      id: 3,
-      departure: 'Marseille',
-      destination: 'Nice',
-      time: '08:30',
-      date: '2023-12-03',
-      availableSeats: 1,
-      pricePerSeat: '18,50',
-      author: 'Lucas',
-      authorPhoto: 'assets/images/profile.png',
-      rating: '4.9',
-    },
-    {
-      id: 3,
-      departure: 'Marseille',
-      destination: 'Nice',
-      time: '08:30',
-      date: '2023-12-03',
-      availableSeats: 1,
-      pricePerSeat: '18,50',
-      author: 'Lucas',
-      authorPhoto: 'assets/images/profile.png',
-      rating: '4.9',
-    },
-    {
-      id: 3,
-      departure: 'Marseille',
-      destination: 'Nice',
-      time: '08:30',
-      date: '2023-12-03',
-      availableSeats: 1,
-      pricePerSeat: '18,50',
-      author: 'Lucas',
-      authorPhoto: 'assets/images/profile.png',
-      rating: '4.9',
-    },
-    {
-      id: 3,
-      departure: 'Marseille',
-      destination: 'Nice',
-      time: '08:30',
-      date: '2023-12-03',
-      availableSeats: 1,
-      pricePerSeat: '18,50',
-      author: 'Lucas',
-      authorPhoto: 'assets/images/profile.png',
-      rating: '4.9',
-    },
-    // Add more rides as needed
-  ];
+export class CreateRideLayoutComponent implements OnInit{
+  searchQuery = '';
+  searchForm: FormGroup;
+  passengers = 1; // Default passenger coun
+  rides: Ride[] = [];
 
-  viewDetails(rideId: number) {
-    console.log('View details for ride ID:', rideId);
-    // Add navigation or logic here
+
+  filteredRides = [...this.rides]; // Initializes with all rides
+
+
+  constructor(private fb: FormBuilder,  private rideService: RideServiceService) {
+    this.searchForm = this.fb.group({
+      departure: [''],
+      destination: [''],
+      date: [''],
+    });
   }
 
-  bookRide(rideId: number) {
-    console.log('Book ride for ride ID:', rideId);
-    // Add booking logic here
+  ngOnInit(): void {
+    this.fetchRides();
+  }
+
+  fetchRides() {
+    this.rideService.getRides().subscribe({
+      next: (rides) => {
+        console.log('Fetched rides (after transformation):', rides); // Log rides
+        this.rides = rides;
+        this.filteredRides = rides; // Initialize with all rides
+      },
+      error: (err) => {
+        console.error('Error fetching rides:', err);
+      },
+    });
+  }
+  
+
+  switchLocations() {
+    const currentDeparture = this.searchForm.get('departure')?.value;
+    const currentDestination = this.searchForm.get('destination')?.value;
+    this.searchForm.patchValue({
+      departure: currentDestination,
+      destination: currentDeparture,
+    });
+  }
+
+  incrementPassengers() {
+    if (this.passengers < 5) {
+      this.passengers++;
+    }
+  }
+
+  decrementPassengers() {
+    if (this.passengers > 1) {
+      this.passengers--;
+    }
+  }
+
+  onSearch() {
+    const { departure, destination, date } = this.searchForm.value;
+    const formattedDate = date ? new Date(date).toISOString().split('T')[0] : null;
+
+    this.filteredRides = this.rides.filter((ride) => {
+      return (
+        (!departure || ride.departure.toLowerCase().includes(departure.toLowerCase())) &&
+        (!destination || ride.destination.toLowerCase().includes(destination.toLowerCase())) &&
+        (!formattedDate || ride.date === formattedDate)
+      );
+    });
   }
 }

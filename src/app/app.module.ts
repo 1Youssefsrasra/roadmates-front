@@ -13,7 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule, MatIconAnchor, MatIconButton } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfileLayoutComponent } from './layouts/profile-layout/profile-layout.component';
@@ -27,6 +27,13 @@ import { DemandCardComponent } from './components/demand-card/demand-card.compon
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { FeedbackCardComponent } from './components/feedback-card/feedback-card.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { HttpClientModule } from '@angular/common/http';
+import { FeedbacksLayoutComponent } from './layouts/feedbacks-layout/feedbacks-layout.component';
+import { RideDetailsLayoutComponent } from './layouts/ride-details-layout/ride-details-layout.component';
+
+import { MatDialogModule } from '@angular/material/dialog';
+import { BookingConfirmationComponent } from './components/booking-confirmation/booking-confirmation.component';
+import { RequestCardComponent } from './components/request-card/request-card.component';
 
 
 
@@ -45,6 +52,10 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     DemandCardComponent,
     UserLayoutComponent,
     FeedbackCardComponent,
+    FeedbacksLayoutComponent,
+    RideDetailsLayoutComponent,
+    BookingConfirmationComponent,
+    RequestCardComponent,
     
   ],
   imports: [
@@ -62,7 +73,10 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatSelectModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule
 
     
 

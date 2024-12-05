@@ -3,72 +3,132 @@
 <div class="profile-container">
   <!-- Left Side: Form -->
   <div class="left-side">
-    <h1>Profile</h1>
+    <h1>Create Account</h1>
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-      <div class="example-form-fields">
-        <!-- Form Fields -->
-        <mat-form-field [floatLabel]="'auto'">
-          <mat-label>First Name</mat-label>
-          <input matInput placeholder="Enter your first name" formControlName="firstName" required />
-        </mat-form-field>
-
-        <mat-form-field [floatLabel]="'auto'">
-          <mat-label>Last Name</mat-label>
-          <input matInput placeholder="Enter your last name" formControlName="lastName" required />
-        </mat-form-field>
-
-        <mat-form-field [floatLabel]="'auto'">
-          <mat-label>Email Address</mat-label>
-          <input matInput placeholder="Enter your email" formControlName="email" type="email" required />
-        </mat-form-field>
-
-        <mat-form-field [floatLabel]="'auto'">
-          <mat-label>Phone Number</mat-label>
-          <input matInput placeholder="Enter your phone number" formControlName="phoneNumber" type="tel" required />
-        </mat-form-field>
-
-        <!-- City and ZIP/Postal Code in a single row -->
-        <div class="form-row">
-          <mat-form-field [floatLabel]="'auto'" class="full-width">
-            <mat-label>City</mat-label>
-            <mat-select formControlName="city" required>
-              <mat-option *ngFor="let city of cities" [value]="city">{{ city }}</mat-option>
-            </mat-select>
+      <div class="form-grid">
+        <!-- Personal Information Section -->
+        <div class="form-section">
+          <h3>Personal Information</h3>
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              placeholder="Enter your first name"
+              formControlName="firstname"
+              required
+            />
           </mat-form-field>
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              placeholder="Enter your last name"
+              formControlName="lastname"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Email Address</mat-label>
+            <input
+              matInput
+              placeholder="Enter your email"
+              formControlName="email"
+              type="email"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Phone Number</mat-label>
+            <input
+              matInput
+              placeholder="Enter your phone number"
+              formControlName="phonenumber"
+              type="tel"
+              required
+            />
+          </mat-form-field>
+        </div>
 
-          <mat-form-field [floatLabel]="'auto'" class="full-width">
-            <mat-label>ZIP/Postal Code</mat-label>
-            <input matInput placeholder="Enter ZIP/Postal Code" formControlName="zipCode" required />
+        <!-- Security Section -->
+        <div class="form-section">
+          <h3>Security Information</h3>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              placeholder="Enter your password"
+              formControlName="password"
+              type="password"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Birthday</mat-label>
+            <input
+              matInput
+              placeholder="Enter your birthday"
+              formControlName="birthday"
+              type="date"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Identity Card</mat-label>
+            <input
+              matInput
+              placeholder="Enter your identity card number"
+              formControlName="identityCard"
+              type="number"
+              required
+            />
           </mat-form-field>
         </div>
 
-        <div class="form-row-inline">
-          <mat-form-field [floatLabel]="'auto'">
-            <mat-label>License Number</mat-label>
-            <input matInput placeholder="Enter your license number" formControlName="licenseNumber" required />
-          </mat-form-field>
-
-          <mat-form-field [floatLabel]="'auto'">
-            <mat-label>Issue Day</mat-label>
-            <mat-select formControlName="issueDay" required>
-              <mat-option *ngFor="let day of days" [value]="day">{{ day }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field [floatLabel]="'auto'">
-            <mat-label>Issue Month</mat-label>
-            <mat-select formControlName="issueMonth" required>
-              <mat-option *ngFor="let month of months" [value]="month">{{ month }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field [floatLabel]="'auto'">
-            <mat-label>Issue Year</mat-label>
-            <mat-select formControlName="issueYear" required>
-              <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
-            </mat-select>
-          </mat-form-field>
+        <!-- Address Section -->
+        <div class="form-section">
+          <h3>Address Information</h3>
+          <div formGroupName="address">
+            <mat-form-field>
+              <mat-label>Street</mat-label>
+              <input
+                matInput
+                placeholder="Enter your street"
+                formControlName="street"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>House Number</mat-label>
+              <input
+                matInput
+                placeholder="Enter your house number"
+                formControlName="houseNumber"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Zip Code</mat-label>
+              <input
+                matInput
+                placeholder="Enter your zip code"
+                formControlName="zipcode"
+                required
+              />
+            </mat-form-field>
+          </div>
         </div>
+      </div>
+
+      <!-- Single Submit Button -->
+      <div class="form-actions">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="profileForm.invalid"
+        >
+          Submit
+        </button>
       </div>
     </form>
   </div>
@@ -81,9 +141,10 @@
         alt="Profile Picture"
         class="profile-picture"
       />
-      <button mat-raised-button color="accent" (click)="onUploadPicture()">Upload Profile Picture</button>
+      <button mat-raised-button color="accent" (click)="onUploadPicture()">
+        Upload Profile Picture
+      </button>
     </div>
-    <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid">Submit</button>
   </div>
 </div>
 

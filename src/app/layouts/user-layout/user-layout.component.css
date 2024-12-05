@@ -148,4 +148,20 @@
     justify-content: space-between;
     margin-top: 20px;
   }
+
+
+  .black-button {
+    background-color: red; 
+    color: white;
+    margin-bottom: 30px;
+  }
+
+  ngx-material-timepicker-content {
+    z-index: 1500 !important; /* Set a high z-index */
+  }
+ 
+  .custom-timepicker-container {
+    z-index: 1500 !important; /* Ensure it appears above the modal */
+    position: fixed !important;
+  }
   

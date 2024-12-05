@@ -1,87 +1,36 @@
 .profile-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: space-between; /* Distributes the form and profile sections */
-    gap: 50px; /* Space between the form and profile sections */
-  }
-  
-  .left-side {
-    flex: 2; /* Make the form section larger */
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .right-side {
-    flex: 1; /* Make the profile picture section smaller */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  h1 {
-    text-align: left; /* Align the title to the left */
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-  
-  .example-form-fields {
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between form fields */
-  }
-  
-  .form-row {
-    display: flex;
-    gap: 15px; /* Space between city and ZIP fields */
-  }
-  
-  .full-width {
-    flex: 1; /* Make both fields in the row equal in width */
-  }
-  
-  .form-row-inline {
-    display: flex;
-    gap: 15px; /* Space between inline fields */
-  }
-  
-  .profile-picture-container {
-    text-align: center;
-    margin: 20px 0;
-  }
-  
-  .profile-picture {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%; /* Makes the picture circular */
-    margin-bottom: 15px;
-  }
-  
-  button {
-    margin-top: 15px;
-    width: 100%;
-  }
-  
-  button[disabled] {
-    background-color: #ddd; /* Gray background for disabled buttons */
-    cursor: not-allowed; /* Show a not-allowed cursor */
-  }
-  
-  @media (max-width: 768px) {
-    .profile-container {
-      flex-direction: column; /* Stack form and profile picture vertically */
-      align-items: center;
-    }
-  
-    .left-side,
-    .right-side {
-      width: 100%;
-    }
-  
-    button {
-      width: auto; /* Buttons adapt to their content on smaller screens */
-    }
-  }
-  
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+.left-side {
+  flex: 2;
+}
+
+.right-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-picture-container {
+  text-align: center;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.form-section {
+  margin-bottom: 20px;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 20px;
+}

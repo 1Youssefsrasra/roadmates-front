@@ -43,8 +43,8 @@
             <a class="forgot-password" routerLink="/forgot-password">Forgot Password?</a>
           </div>
   
-          <button mat-raised-button color="primary" class="full-width" type="submit" [disabled]="authForm.invalid">Log In</button>
-          <button mat-raised-button color="accent" class="full-width google-signin">
+          <button mat-raised-button color="primary" routerLink="/create-ride" class="full-width" type="submit" [disabled]="authForm.invalid">Log In</button>
+          <button mat-raised-button color="accent" routerLink="/register" class="full-width google-signin">
             Sign Up
           </button>
         </form>

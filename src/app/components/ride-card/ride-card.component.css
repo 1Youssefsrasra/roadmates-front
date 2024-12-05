@@ -1,6 +1,6 @@
 .ride-card {
     width: 100%;
-    border: 2px solid #00a4ff; /* Blue border */
+    border: 2px solid #43494d; /* Blue border */
     border-radius: 10px; /* Rounded corners */
     padding: 15px;
     font-family: Arial, sans-serif;
@@ -9,6 +9,11 @@
     flex-direction: column;
     gap: 10px;
     background-color: #fff;
+  }
+  .ride-destination span {
+    display: block;
+    font-size: 14px;
+    margin-top: 5px;
   }
   
   .ride-header {
@@ -33,7 +38,7 @@
   .ride-price {
     font-size: 16px;
     font-weight: bold;
-    color: #005678;
+    color: #1d2c31;
   }
   
   .ride-divider {
@@ -82,10 +87,16 @@
   
   .details-button {
     font-size: 14px;
+    color: #fff;
+    background-color: #6f7274;
+    font-weight: bold;
+
   }
   
   .book-button {
     font-size: 14px;
     font-weight: bold;
+    color: #fff;
+    background-color: #0f1213;
   }
   

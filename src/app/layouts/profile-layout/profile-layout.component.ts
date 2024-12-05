@@ -1,57 +1,58 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserRequest } from 'src/app/models/userRequest';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-profile-layout',
   templateUrl: './profile-layout.component.html',
-  styleUrls: ['./profile-layout.component.css']
+  styleUrls: ['./profile-layout.component.css'],
 })
 export class ProfileLayoutComponent {
-  // Form group
   profileForm: FormGroup;
+  isLoading: boolean = false; // To indicate loading state
+  submissionMessage: string | null = null; // To display success or error messages
 
-  // Dropdown data
-  cities = ['New York', 'Los Angeles', 'Chicago', 'Houston', 'Phoenix'];
-  days = Array.from({ length: 31 }, (_, i) => i + 1);
-  months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-  ];
-  years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
-
-  constructor(private fb: FormBuilder) {
-    // Initialize the form
+  constructor(private fb: FormBuilder, private userService: UserServiceService) {
+    // Initialize the FormGroup with nested address
     this.profileForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      city: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      zipCode: ['', Validators.required],
-      licenseNumber: ['', Validators.required],
-      issueDay: ['', Validators.required],
-      issueMonth: ['', Validators.required],
-      issueYear: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      phonenumber: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      birthday: ['', Validators.required],
+      identityCard: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      address: this.fb.group({
+        street: ['', Validators.required],
+        houseNumber: ['', Validators.required],
+        zipcode: ['', Validators.required],
+      }),
     });
   }
 
   onSubmit() {
     if (this.profileForm.valid) {
-      console.log('Form submitted:', this.profileForm.value);
-    } else {
-      alert('Please fill all required fields!');
-    }
-  }
+      const user: UserRequest = this.profileForm.value;
+      this.isLoading = true; // Start loading
+      this.submissionMessage = null; // Clear any previous messages
+
+      this.userService.signUp(user).subscribe({
+        next: (response) => {
+          console.log('User created with ID:', response);
+          this.submissionMessage = `User created successfully! User ID: ${response}`;
+        },
+        error: (err) => {
+          console.error('Error creating user:', err);
+          this.submissionMessage = 'Failed to create user. Please try again.';
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
+      
+      
+  }}
 
   onUploadPicture() {
     alert('Upload Profile Picture clicked!');

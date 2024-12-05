@@ -21,16 +21,14 @@
     <!-- Rides Created Section -->
     <section class="profile-section">
       <h3>My Rides</h3>
-      <div class="rides-grid">
-        <app-ride-card
-          *ngFor="let ride of createdRides"
-          [ride]="ride"
-        ></app-ride-card>
+      <button mat-raised-button class="black-button" (click)="toggleCreateRideForm()">
+        Create New Ride
+      </button>
+      <div class="rides-grid-container">
+        <app-ride-card *ngFor="let ride of filteredRides" [ride]="ride"></app-ride-card>
       </div>
-       <!-- Button to Open Form -->
-  <button mat-raised-button color="primary" (click)="toggleCreateRideForm()">
-    Create New Ride
-  </button>
+      
+    
 
  <!-- Popup Form -->
 <div class="popup-form-container" [ngClass]="{ 'show': showCreateRideForm }" aria-labelledby="create-ride-heading">
@@ -61,9 +59,16 @@
         <!-- Time -->
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Time</mat-label>
-          <input matInput [ngxTimepicker]="timePicker" formControlName="time" placeholder="Select the time of the ride" required />
-          <ngx-material-timepicker #timePicker></ngx-material-timepicker>
+          <input
+            matInput
+            type="text"
+            formControlName="time"
+            placeholder="Enter the time of the ride (e.g., 18:30)"
+            required
+          />
         </mat-form-field>
+        
+        
   
         <!-- Available Seats -->
         <mat-form-field appearance="fill" class="full-width">
@@ -118,10 +123,10 @@
     <section class="profile-section">
       <h3>My Requests</h3>
       <div class="requests-grid">
-        <app-demand-card
+        <app-request-card
           *ngFor="let request of sentRequests"
           [demand]="request"
-        ></app-demand-card>
+        ></app-request-card>
       </div>
     </section>
 

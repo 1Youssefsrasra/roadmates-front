@@ -6,17 +6,25 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./demand-card.component.css']
 })
 export class DemandCardComponent {
-  @Input() demand: any; 
+  @Input() demand: any;
 
-  holdRequest(arg0: any) {
-throw new Error('Method not implemented.');
-}
-rejectRequest(arg0: any) {
-throw new Error('Method not implemented.');
-}
-acceptRequest(arg0: any) {
-throw new Error('Method not implemented.');
-}
+  selectedAction: string | null = null;
 
+  acceptRequest(id: any) {
+    this.selectedAction = 'accept';
+    console.log(`Accepted request with ID: ${id}`);
+    // Perform additional logic here
+  }
 
+  rejectRequest(id: any) {
+    this.selectedAction = 'reject';
+    console.log(`Rejected request with ID: ${id}`);
+    // Perform additional logic here
+  }
+
+  holdRequest(id: any) {
+    this.selectedAction = 'hold';
+    console.log(`Held request with ID: ${id}`);
+    // Perform additional logic here
+  }
 }

@@ -5,6 +5,8 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { CreateRideLayoutComponent } from './layouts/create-ride-layout/create-ride-layout.component';
 import { ProfileLayoutComponent } from './layouts/profile-layout/profile-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
+import { RideDetailsLayoutComponent } from './layouts/ride-details-layout/ride-details-layout.component';
+import { FeedbacksLayoutComponent } from './layouts/feedbacks-layout/feedbacks-layout.component';
 
 const routes: Routes = [
 
@@ -22,6 +24,10 @@ const routes: Routes = [
   {path: 'create-ride', component: CreateRideLayoutComponent},
   {path: 'register', component: ProfileLayoutComponent},
   {path: 'user', component: UserLayoutComponent},
+  {path: 'ride', component: RideDetailsLayoutComponent},
+  {path: 'feedback', component: FeedbacksLayoutComponent},
+
+
 
 
   

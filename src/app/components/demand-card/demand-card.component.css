@@ -36,17 +36,26 @@
   }
   
   .accept-button {
-    background-color: #28a745;
+    background-color: #277c1c;
     color: white;
   }
   
   .reject-button {
-    background-color: #dc3545;
+    background-color: #a71a1a;
     color: white;
   }
   
   .hold-button {
     background-color: #6c757d;
     color: white;
+  }
+  
+  .demand-actions button {
+    transition: opacity 0.3s, background-color 0.3s; /* Smooth transition for opacity and color */
+  }
+  
+  .demand-actions button:disabled {
+    opacity: 0.5; /* Reduce opacity for inactive buttons */
+    cursor: not-allowed; /* Show not-allowed cursor for disabled buttons */
   }
   
